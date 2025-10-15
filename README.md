@@ -74,8 +74,8 @@ The final deliverable is an **interactive web application** where users can inpu
 
 ### 1️ Clone the Repository
 ```
-git clone https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY_NAME>.git
-cd <YOUR_REPOSITORY_NAME>
+git clone https://github.com/ubaidk70-1/mental-health-in-tech-predictor.git
+cd mental-health-in-tech-predictor
 ```
 
 ### 2️ Create and Activate a Virtual Environment

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container result-container">
+        <header class="main-header">
+            <h1>Prediction Result</h1>
+        </header>
+
+        <div class="result-box">
+            {% if prediction and not prediction.error %}
+                <div class="prediction-card {{ 'yes' if prediction.prediction == 'Yes' else 'no' }}">
+                    <div class="prediction-icon">
+                        {% if prediction.prediction == 'Yes' %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        {% endif %}
+                    </div>
+                    <div class="prediction-text">
+                        <p>The model predicts this individual is likely to answer:</p>
+                        <span class="prediction-value">{{ prediction.prediction }}</span>
+                    </div>
+                </div>
+                <p class="confidence">
+                    Model Confidence: <strong>{{ prediction.confidence_probability }}</strong>
+                </p>
+                <div class="disclaimer">
+                    <p>This prediction is based on statistical patterns from survey data and is intended for informational purposes only. It is not a substitute for professional medical advice or diagnosis.</p>
+                </div>
+            {% elif prediction.error %}
+                <div class="prediction-card error">
+                    <h3>Error</h3>
+                    <p>{{ prediction.error }}</p>
+                </div>
+            {% else %}
+                 <div class="prediction-card error">
+                    <h3>Error</h3>
+                    <p>An unknown error occurred. Please try again.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <a href="/" class="back-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Make Another Prediction
+        </a>
+    </div>
+</body>
+</html>
+

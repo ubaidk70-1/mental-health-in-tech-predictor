@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health in Tech Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10c0-4.42-3.58-8-8-8.29"></path><path d="M12 2v4"></path><path d="M12 12a5 5 0 0 0-5 5"></path><path d="M12 12a5 5 0 0 1 5 5"></path><path d="M12 12h.01"></path></svg>
+            <h1>Mental Health Predictor</h1>
+            <p class="subtitle">An AI-powered tool to analyze factors influencing mental health treatment in the tech industry.</p>
+        </header>
+
+        <form action="/predict" method="POST">
+            <div class="form-grid">
+                <!-- Core Input Fields -->
+                <div class="form-group">
+                    <label for="Age">Age</label>
+                    <input type="number" id="Age" name="Age" required min="18" max="75" value="35">
+                </div>
+                <div class="form-group">
+                    <label for="Gender">Gender</label>
+                    <select id="Gender" name="Gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female" selected>Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Country">Country</label>
+                    <select id="Country" name="Country" required>
+                        <option value="United States">United States</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Other">Other (Not Listed)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="family_history">Family history of mental illness?</label>
+                    <select id="family_history" name="family_history" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="work_interfere">How often does condition interfere with work?</label>
+                    <select id="work_interfere" name="work_interfere" required>
+                        <option value="Sometimes">Sometimes</option>
+                        <option value="Never">Never</option>
+                        <option value="Rarely">Rarely</option>
+                        <option value="Often">Often</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="no_employees">Company Size</label>
+                    <select id="no_employees" name="no_employees" required>
+                        <option value="26-100">26-100</option>
+                        <option value="More than 1000">More than 1000</option>
+                        <option value="100-500">100-500</option>
+                        <option value="6-25">6-25</option>
+                        <option value="1-5">1-5</option>
+                        <option value="500-1000">500-1000</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="benefits">Employer provides mental health benefits?</label>
+                    <select id="benefits" name="benefits" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Don't know">Don't know</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="care_options">Aware of care options?</label>
+                    <select id="care_options" name="care_options" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Not sure">Not sure</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="leave">Ease of taking medical leave?</label>
+                    <select id="leave" name="leave" required>
+                        <option value="Somewhat easy">Somewhat easy</option>
+                        <option value="Don't know">Don't know</option>
+                        <option value="Very easy">Very easy</option>
+                        <option value="Somewhat difficult">Somewhat difficult</option>
+                        <option value="Very difficult">Very difficult</option>
+                    </select>
+                </div>
+                
+                <!-- Hidden fields for simplicity in UI, but required by the model -->
+                <input type="hidden" name="self_employed" value="No">
+                <input type="hidden" name="remote_work" value="No">
+                <input type="hidden" name="tech_company" value="Yes">
+                <input type="hidden" name="wellness_program" value="No">
+                <input type="hidden" name="seek_help" value="Don't know">
+                <input type="hidden" name="anonymity" value="Yes">
+                <input type="hidden" name="mental_health_consequence" value="No">
+                <input type="hidden" name="phys_health_consequence" value="No">
+                <input type="hidden" name="coworkers" value="Some of them">
+                <input type="hidden" name="supervisor" value="Yes">
+                <input type="hidden" name="mental_health_interview" value="No">
+                <input type="hidden" name="phys_health_interview" value="Maybe">
+                <input type="hidden" name="mental_vs_physical" value="Yes">
+                <input type="hidden" name="obs_consequence" value="No">
+
+                <button type="submit" class="submit-btn">Analyze & Predict</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

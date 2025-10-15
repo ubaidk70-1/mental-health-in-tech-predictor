@@ -1,0 +1,192 @@
+:root {
+    --primary-color: #3B82F6;
+    --primary-hover: #2563EB;
+    --bg-light: #F9FAFB;
+    --bg-dark: #111827;
+    --card-bg: #FFFFFF;
+    --text-dark: #1F2937;
+    --text-light: #6B7280;
+    --border-color: #D1D5DB;
+    --success-bg: #D1FAE5;
+    --success-text: #065F46;
+    --success-icon: #10B981;
+    --danger-bg: #FEE2E2;
+    --danger-text: #991B1B;
+    --danger-icon: #EF4444;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image:
+        radial-gradient(at 0% 0%, hsla(253, 16%, 7%, .2) 0px, transparent 50%),
+        radial-gradient(at 98% 1%, hsla(22, 70%, 53%, .2) 0px, transparent 50%);
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    background: var(--card-bg);
+    padding: 2.5rem 3rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.header-icon {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+select, input[type="number"] {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+select:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.submit-btn, .back-btn {
+    grid-column: 1 / -1;
+    padding: 0.8rem 1rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.submit-btn:hover, .back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.result-container {
+    max-width: 600px;
+}
+
+.result-box {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.prediction-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    border: 1px solid transparent;
+}
+
+.prediction-card.yes {
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+    border-color: var(--danger-icon);
+}
+.prediction-card.yes .prediction-icon {
+    color: var(--danger-icon);
+}
+
+.prediction-card.no {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border-color: var(--success-icon);
+}
+.prediction-card.no .prediction-icon {
+    color: var(--success-icon);
+}
+
+.prediction-card.error {
+    background-color: #FFFBEB;
+    color: #92400E;
+    border-color: #FBBF24;
+}
+
+.prediction-text p {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+}
+.prediction-value {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.confidence {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+.disclaimer {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #9CA3AF;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
